@@ -51,7 +51,8 @@ CREATE TABLE TollLog (
     Driver_id int NOT NULL,
     cost double NULL,
     Car_id int NOT NULL,
-    Driver_2_id int NOT NULL,
+    `location` varchar(100) DEFAULT NOT NULL
+    tolled_at timestamp NULL DEFAULT CURRENT_TIMESTAMP,
     CONSTRAINT TollLog_pk PRIMARY KEY (id)
 ) ENGINE InnoDB;
 
