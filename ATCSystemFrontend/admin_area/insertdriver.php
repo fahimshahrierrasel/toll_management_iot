@@ -62,10 +62,6 @@
   </div>
   <div id="main_content">
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <!-- end of menu tab -->
-    <!-- end of left content -->
-
-
     <div id="menu_tab">
       <div class="left_menu_corner"></div>
       <ul class="menu">
