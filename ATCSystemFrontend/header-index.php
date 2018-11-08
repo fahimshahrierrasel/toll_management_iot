@@ -56,7 +56,7 @@
         <li><a href="admi_area/tollchart.php" class="nav1"> Toll Chart</a></li>
         <li class="divider"></li>
         <li class="divider"></li>
-        <li><a href="index_admin.php" class="nav2">User login</a></li>
+        <li><a href="login.html" class="nav2">User login</a></li>
         <li class="divider"></li>
         <li class="divider"></li>
         
