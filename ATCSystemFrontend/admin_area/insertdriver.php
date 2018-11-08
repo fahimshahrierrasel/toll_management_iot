@@ -139,25 +139,12 @@
               <label class="contact"><strong>Address:</strong></label>
              <textarea name="address" class="contact_input" cols="33" rows="7" required></textarea>
             </div>
-            
-				
-
 			 <div class="form_row">
                             &nbsp;<input type="submit" class="contact_input" name="index" value="INSERT" style="width: 336px"/>&nbsp;<br />
-              
-            
+                  
             </div>
-
-
-	
- 
-				
-				
           </div>
         </div>
-        
-      
-        
         <div class="bottom_prod_box_big"></div>
       </div>
     &nbsp;<br>
