@@ -12,6 +12,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
 import com.fahimshahrierrasel.mycartoll.R;
+import com.fahimshahrierrasel.mycartoll.car.CarFragment;
+import com.fahimshahrierrasel.mycartoll.car.CarPresenter;
 import com.fahimshahrierrasel.mycartoll.data.model.Driver;
 import com.fahimshahrierrasel.mycartoll.home.HomeFragment;
 import com.fahimshahrierrasel.mycartoll.home.HomePresenter;
@@ -25,6 +27,7 @@ public class MainActivity extends AppCompatActivity
 
     private HomePresenter homePresenter;
     private LogPresenter logPresenter;
+    private CarPresenter carPresenter;
 
     GoodPrefs goodPrefs;
 
@@ -44,7 +47,6 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-
 
         showHomeFragment();
     }
@@ -81,6 +83,21 @@ public class MainActivity extends AppCompatActivity
         logPresenter = new LogPresenter(logFragment);
     }
 
+    private void showCarFragment() {
+        Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.fragmentFrame);
+        CarFragment carFragment;
+        if (fragment instanceof CarFragment) {
+            carFragment = (CarFragment) fragment;
+        } else {
+            carFragment = CarFragment.newInstance();
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.fragmentFrame, carFragment)
+                    .addToBackStack(null)
+                    .commit();
+        }
+        carPresenter = new CarPresenter(carFragment);
+    }
+
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
@@ -99,7 +116,7 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.nav_home) {
             showHomeFragment();
         } else if (id == R.id.nav_cars) {
-
+            showCarFragment();
         } else if (id == R.id.nav_logs) {
             showLogFragment();
         } else if (id == R.id.nav_profile) {

@@ -23,12 +23,6 @@ public class LogPresenter implements LogContract.Presenter {
         this.logView = logView;
         this.logView.setPresenter(this);
         goodPrefs = GoodPrefs.getInstance();
-
-    }
-
-    @Override
-    public void getDriverInfo() {
-        driver = goodPrefs.getObject("driver", Driver.class);
     }
 
     @Override

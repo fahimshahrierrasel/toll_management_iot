@@ -52,14 +52,15 @@ public class HomePresenter implements HomeContract.Presenter {
                     Driver driver = response.body();
                     if (driver != null) {
                         homeView.setDriverCurrentBalance("BDT " + driver.getBalance());
-                        homeView.stopSwipeRefreshing();
+
                     }
                 }
+                homeView.stopSwipeRefreshing();
             }
 
             @Override
             public void onFailure(Call<Driver> call, Throwable t) {
-
+                homeView.stopSwipeRefreshing();
             }
         });
     }

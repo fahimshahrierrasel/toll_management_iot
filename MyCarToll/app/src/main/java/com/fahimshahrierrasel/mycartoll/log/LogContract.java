@@ -12,7 +12,6 @@ import java.util.List;
 
 public interface LogContract {
     interface Presenter extends BasePresenter {
-        void getDriverInfo();
         void getDriverLogs(int driverId);
         void getCarLogs(int carId);
     }
