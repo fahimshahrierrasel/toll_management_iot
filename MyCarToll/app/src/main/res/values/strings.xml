@@ -19,4 +19,8 @@
     <string name="time">Time:</string>
     <string name="toll_location">Toll Location</string>
     <string name="amount">Amount</string>
+    <string name="home">Home</string>
+    <string name="cars">Cars</string>
+    <string name="logs">Logs</string>
+    <string name="profile">Profile</string>
 </resources>

@@ -2,6 +2,7 @@ package com.fahimshahrierrasel.mycartoll.main;
 
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -11,13 +12,21 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
 import com.fahimshahrierrasel.mycartoll.R;
+import com.fahimshahrierrasel.mycartoll.data.model.Driver;
 import com.fahimshahrierrasel.mycartoll.home.HomeFragment;
 import com.fahimshahrierrasel.mycartoll.home.HomePresenter;
+import com.fahimshahrierrasel.mycartoll.log.LogFragment;
+import com.fahimshahrierrasel.mycartoll.log.LogPresenter;
+
+import nouri.in.goodprefslib.GoodPrefs;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private HomePresenter homePresenter;
+    private LogPresenter logPresenter;
+
+    GoodPrefs goodPrefs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,19 +34,7 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        HomeFragment homeFragment = (HomeFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.fragmentFrame);
-
-        if (homeFragment == null) {
-            homeFragment = HomeFragment.newInstance();
-            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-            transaction.add(R.id.fragmentFrame, homeFragment);
-            transaction.commit();
-        }
-
-        homePresenter = new HomePresenter(homeFragment);
-
+        goodPrefs = GoodPrefs.getInstance();
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -47,6 +44,41 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+
+        showHomeFragment();
+    }
+
+    private void showHomeFragment() {
+        Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.fragmentFrame);
+        HomeFragment homeFragment;
+        if (fragment instanceof HomeFragment) {
+            homeFragment = (HomeFragment) fragment;
+
+        } else {
+            homeFragment = HomeFragment.newInstance();
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.fragmentFrame, homeFragment)
+                    .commit();
+        }
+        homePresenter = new HomePresenter(homeFragment);
+    }
+
+    private void showLogFragment() {
+        Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.fragmentFrame);
+        LogFragment logFragment;
+        if (fragment instanceof LogFragment) {
+            logFragment = (LogFragment) fragment;
+
+        } else {
+            Driver driver = goodPrefs.getObject("driver", Driver.class);
+            logFragment = LogFragment.newInstance(driver.getId(), "DRIVER");
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.fragmentFrame, logFragment)
+                    .addToBackStack(null)
+                    .commit();
+        }
+        logPresenter = new LogPresenter(logFragment);
     }
 
     @Override
@@ -64,14 +96,13 @@ public class MainActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
+        if (id == R.id.nav_home) {
+            showHomeFragment();
+        } else if (id == R.id.nav_cars) {
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
+        } else if (id == R.id.nav_logs) {
+            showLogFragment();
+        } else if (id == R.id.nav_profile) {
 
         }
 
