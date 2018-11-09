@@ -5,6 +5,9 @@ import com.google.gson.annotations.SerializedName;
 
 public class Log {
 
+    @SerializedName("model")
+    @Expose
+    private String model;
     @SerializedName("cost")
     @Expose
     private int cost;
@@ -14,6 +17,14 @@ public class Log {
     @SerializedName("tolled_at")
     @Expose
     private String tolledAt;
+
+    public String getModel() {
+        return model;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
+    }
 
     public int getCost() {
         return cost;

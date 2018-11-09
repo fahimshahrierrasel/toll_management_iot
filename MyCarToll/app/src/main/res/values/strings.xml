@@ -16,4 +16,7 @@
     <string name="license_no">License No</string>
     <string name="car_type">Car Type</string>
     <string name="rfid">RFID:</string>
+    <string name="time">Time:</string>
+    <string name="toll_location">Toll Location</string>
+    <string name="amount">Amount</string>
 </resources>

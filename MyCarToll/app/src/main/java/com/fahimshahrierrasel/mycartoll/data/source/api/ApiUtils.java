@@ -4,6 +4,7 @@ import com.fahimshahrierrasel.mycartoll.MyCarTollApp;
 import com.fahimshahrierrasel.mycartoll.R;
 import com.fahimshahrierrasel.mycartoll.data.source.api.service.CarService;
 import com.fahimshahrierrasel.mycartoll.data.source.api.service.DriverService;
+import com.fahimshahrierrasel.mycartoll.data.source.api.service.LogService;
 import com.fahimshahrierrasel.mycartoll.data.source.api.service.LoginService;
 import com.fahimshahrierrasel.mycartoll.data.source.api.service.UserService;
 
@@ -27,6 +28,10 @@ public class ApiUtils {
 
     public static CarService getCarService() {
         return RetrofitClient.getClient(BASE_URL).create(CarService.class);
+    }
+
+    public static LogService getLogService() {
+        return RetrofitClient.getClient(BASE_URL).create(LogService.class);
     }
 
 }

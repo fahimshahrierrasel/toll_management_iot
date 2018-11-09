@@ -17,6 +17,8 @@ import com.fahimshahrierrasel.mycartoll.R;
 import com.fahimshahrierrasel.mycartoll.adapter.CarAdapter;
 import com.fahimshahrierrasel.mycartoll.data.model.Car;
 import com.fahimshahrierrasel.mycartoll.data.model.Driver;
+import com.fahimshahrierrasel.mycartoll.log.LogFragment;
+import com.fahimshahrierrasel.mycartoll.log.LogPresenter;
 
 import java.util.List;
 
@@ -31,6 +33,7 @@ public class HomeFragment extends Fragment implements HomeContract.View {
     TextView textViewLicense;
     TextView textViewBalance;
     RecyclerView recyclerViewCars;
+    private LogPresenter logPresenter;
 
     /**
      * Android Views
@@ -94,7 +97,15 @@ public class HomeFragment extends Fragment implements HomeContract.View {
 
     @Override
     public void showCarLog(Car car) {
-        
+
+        LogFragment logFragment = LogFragment.newInstance(car.getId(), "CAR");
+
+        getActivity().getSupportFragmentManager().beginTransaction()
+                .replace(R.id.fragmentFrame, logFragment)
+                .addToBackStack(null)
+                .commit();
+
+        logPresenter = new LogPresenter(logFragment);
     }
 
     @Override

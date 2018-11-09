@@ -21,7 +21,7 @@ public interface LoginContract {
         void isAuthenticated();
     }
 
-    interface View extends BaseView<Presenter> {
+    interface View extends BaseView<LoginContract.Presenter> {
         void showLoginError(String msg);
         void goToMainActivity();
     }

@@ -87,7 +87,7 @@ public class HomePresenter implements HomeContract.Presenter {
 
     @Override
     public void onCarClicked(Car car) {
-
+        homeView.showCarLog(car);
     }
 
     @Override
