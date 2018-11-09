@@ -50,15 +50,7 @@ include("header.php");
         
       </ul>
      
-<div class="title_box">Manufacturers</div>
-      <ul class="left_menu">
-        
 
-    <?php  getbrands();  ?>
-
-
- 
-</ul>
  <br>
  <br>
 

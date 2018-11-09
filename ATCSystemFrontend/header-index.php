@@ -59,6 +59,9 @@
         <li><a href="login.html" class="nav2">User login</a></li>
         <li class="divider"></li>
         <li class="divider"></li>
+        <li><a href="signup.php" class="nav2">Sign Up</a></li>
+        <li class="divider"></li>
+        <li class="divider"></li>
         
         
        

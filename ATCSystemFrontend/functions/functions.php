@@ -1,6 +1,6 @@
 <?php
 
- $con = mysqli_connect("localhost","root","","atollsystem");
+ $con = mysqli_connect("localhost","root","","atcsystem");
 
  if(mysqli_connect_errno()){
   
@@ -14,14 +14,14 @@ function getcats(){
 
 	global $con;
 
-	$get_cats = "select * from categories";
+	$get_cats = "select * from cartype";
 	$run_cats = mysqli_query($con,$get_cats);
 
 	while($row_cats=mysqli_fetch_array($run_cats)){
 
 
-		$cat_title = $row_cats['cat_title'];
-        $cat_id = $row_cats['cat_id'];
+		$cat_title = $row_cats['type'];
+        $cat_id = $row_cats['id'];
 	
     echo "<li class=even><a href='index.php?cat=$cat_id'>$cat_title</a></li>";
 	}
@@ -66,7 +66,7 @@ function getpro(){
 
 	global $con;
 
-    $get_pro = "select * from products order by RAND() LIMIT 0,6";
+    $get_pro = "select * from car order by RAND() LIMIT 0,6";
     $run_pro = mysqli_query($con,$get_pro);
     
 
@@ -74,12 +74,12 @@ function getpro(){
     while($row_pro = mysqli_fetch_array($run_pro)){
 
 
-        $product_id = $row_pro['prd_id'];
-        $product_category = $row_pro['prd_cat'];
-        $product_brand = $row_pro['prd_brand'];
-        $product_title = $row_pro['owner_name']; 
-        $product_price = $row_pro['balance'];
-        $product_image = $row_pro['prd_img'];
+        $product_id = $row_pro['id'];
+        $product_category = $row_pro['model'];
+        $product_brand = $row_pro['rfid'];
+        $product_title = $row_pro['image']; 
+        $product_price = $row_pro['no_plate'];
+        $product_image = $row_pro['CarType_id'];
         
          
 
