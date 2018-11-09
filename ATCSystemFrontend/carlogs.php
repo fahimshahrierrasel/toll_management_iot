@@ -119,8 +119,13 @@ include("header.php");
 
 
 
-$get_carlog = "select * from tolllog INNER JOIN car INNER JOIN driver INNER JOIN drivercar
-ON tolllog.Driver_id = driver.id AND tolllog.Car_id = car.id ORDER BY tolllog.id DESC;";
+$get_carlog = "select 
+tolllog.id,
+tolllog.tolled_at,
+car.no_plate,
+car.rfid,
+tolllog.Driver_id
+ from tolllog INNER JOIN car ON car.id=tolllog.Car_id INNER JOIN driver ON driver.id=tolllog.Driver_id ORDER BY tolllog.id DESC ";
     $run_pro = mysqli_query($con,$get_carlog);
     
 
@@ -137,11 +142,11 @@ echo"<table>
     <th>RFID NO</th>
   </tr>";
   while ($row_pro = mysqli_fetch_array($run_pro)){
-        $carlog_id = $row_pro['tolllog.id'];
-        $carlog_time = $row_pro['tolllog.tolled_at'];
-        $car_no_plate = $row_pro['car.no_plate'];
-        $car_RFID = $row_pro['car.rfid'];
-        $car_id = $row_pro['drivercar.Driver_id'];
+        $carlog_id = $row_pro['id'];
+        $carlog_time = $row_pro['tolled_at'];
+        $car_no_plate = $row_pro['no_plate'];
+        $car_RFID = $row_pro['rfid'];
+        $car_id = $row_pro['Driver_id'];
 
        
       // echo "Carlog ID: " . $carlog_id . " - time: " . $carlog_time. "- Car ID: " . $car_id. "<br>";
@@ -149,11 +154,11 @@ echo"<table>
  
 
 echo "<tr>";
-echo "<td>" . $row_pro['tolllog.id'] . "</td>";
-echo "<td>" . $row_pro['tolllog.tolled_at'] . "</td>";
-echo "<td>" . $row_pro['car.no_plate'] . "</td>";
+echo "<td>" . $row_pro['id'] . "</td>";
+echo "<td>" . $row_pro['tolled_at'] . "</td>";
+echo "<td>" . $row_pro['no_plate'] . "</td>";
 echo "<td> <a href='details.php?pro_id=$car_id'> Details</a> </td>";
-echo "<td>" . $row_pro['car.rfid'] . "</td>";
+echo "<td>" . $row_pro['rfid'] . "</td>";
 echo "</tr>";
 }
 echo "</table>";
