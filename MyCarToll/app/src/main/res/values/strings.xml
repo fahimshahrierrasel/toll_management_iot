@@ -23,4 +23,6 @@
     <string name="cars">Cars</string>
     <string name="logs">Logs</string>
     <string name="profile">Profile</string>
+    <string name="logout">Logout</string>
+    <string name="account">Account</string>
 </resources>

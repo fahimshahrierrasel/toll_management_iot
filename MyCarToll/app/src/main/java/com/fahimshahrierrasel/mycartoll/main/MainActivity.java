@@ -1,5 +1,6 @@
 package com.fahimshahrierrasel.mycartoll.main;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -10,15 +11,22 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.fahimshahrierrasel.mycartoll.R;
 import com.fahimshahrierrasel.mycartoll.car.CarFragment;
 import com.fahimshahrierrasel.mycartoll.car.CarPresenter;
 import com.fahimshahrierrasel.mycartoll.data.model.Driver;
+import com.fahimshahrierrasel.mycartoll.data.model.User;
 import com.fahimshahrierrasel.mycartoll.home.HomeFragment;
 import com.fahimshahrierrasel.mycartoll.home.HomePresenter;
 import com.fahimshahrierrasel.mycartoll.log.LogFragment;
 import com.fahimshahrierrasel.mycartoll.log.LogPresenter;
+import com.fahimshahrierrasel.mycartoll.login.LoginActivity;
+
+import java.text.BreakIterator;
 
 import nouri.in.goodprefslib.GoodPrefs;
 
@@ -30,6 +38,9 @@ public class MainActivity extends AppCompatActivity
     private CarPresenter carPresenter;
 
     GoodPrefs goodPrefs;
+    private Driver driver;
+    private User user;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +48,12 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
         goodPrefs = GoodPrefs.getInstance();
+
+        driver = goodPrefs.getObject("driver", Driver.class);
+        user = goodPrefs.getObject("user", User.class);
+
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -47,6 +63,12 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        View headerView = navigationView.getHeaderView(0);
+        TextView textViewDriverName = headerView.findViewById(R.id.textView_driver_name);
+        TextView textViewDriverEmail = headerView.findViewById(R.id.textView_driver_email);
+        textViewDriverName.setText(driver.getName());
+        textViewDriverEmail.setText(user.getEmail());
 
         showHomeFragment();
     }
@@ -73,7 +95,7 @@ public class MainActivity extends AppCompatActivity
             logFragment = (LogFragment) fragment;
 
         } else {
-            Driver driver = goodPrefs.getObject("driver", Driver.class);
+
             logFragment = LogFragment.newInstance(driver.getId(), "DRIVER");
             getSupportFragmentManager().beginTransaction()
                     .replace(R.id.fragmentFrame, logFragment)
@@ -96,6 +118,14 @@ public class MainActivity extends AppCompatActivity
                     .commit();
         }
         carPresenter = new CarPresenter(carFragment);
+    }
+
+    private void loggingOut() {
+        goodPrefs.deleteValue("authenticated");
+        goodPrefs.deleteValue("user");
+        goodPrefs.deleteValue("driver");
+        startActivity(new Intent(this, LoginActivity.class));
+        finish();
     }
 
     @Override
@@ -121,6 +151,8 @@ public class MainActivity extends AppCompatActivity
             showLogFragment();
         } else if (id == R.id.nav_profile) {
 
+        } else if(id == R.id.nav_logout) {
+            loggingOut();
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);

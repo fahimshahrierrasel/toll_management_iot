@@ -16,23 +16,19 @@
             android:id="@+id/nav_logs"
             android:icon="@drawable/ic_poll"
             android:title="@string/logs" />
-        <item
-            android:id="@+id/nav_profile"
-            android:icon="@drawable/ic_person"
-            android:title="@string/profile" />
     </group>
 
-    <!--<item android:title="Communicate">-->
-        <!--<menu>-->
-            <!--<item-->
-                <!--android:id="@+id/nav_share"-->
-                <!--android:icon="@drawable/ic_menu_share"-->
-                <!--android:title="Share" />-->
-            <!--<item-->
-                <!--android:id="@+id/nav_send"-->
-                <!--android:icon="@drawable/ic_menu_send"-->
-                <!--android:title="Send" />-->
-        <!--</menu>-->
-    <!--</item>-->
+    <item android:title="@string/account">
+        <menu>
+            <item
+                android:id="@+id/nav_profile"
+                android:icon="@drawable/ic_person"
+                android:title="@string/profile" />
+            <item
+                android:id="@+id/nav_logout"
+                android:icon="@drawable/ic_input"
+                android:title="@string/logout" />
+        </menu>
+    </item>
 
 </menu>
