@@ -3,8 +3,8 @@ const mysql = require('mysql')
 const db = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: 'root',
-    database: 'toll_management'
+    password: '',
+    database: 'atcsystem'
 })
 
 module.exports = db;
