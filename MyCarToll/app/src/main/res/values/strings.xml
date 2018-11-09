@@ -25,4 +25,5 @@
     <string name="profile">Profile</string>
     <string name="logout">Logout</string>
     <string name="account">Account</string>
+    <string name="address">Address</string>
 </resources>

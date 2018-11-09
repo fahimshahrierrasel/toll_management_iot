@@ -25,6 +25,8 @@ import com.fahimshahrierrasel.mycartoll.home.HomePresenter;
 import com.fahimshahrierrasel.mycartoll.log.LogFragment;
 import com.fahimshahrierrasel.mycartoll.log.LogPresenter;
 import com.fahimshahrierrasel.mycartoll.login.LoginActivity;
+import com.fahimshahrierrasel.mycartoll.profile.ProfileFragment;
+import com.fahimshahrierrasel.mycartoll.profile.ProfilePresenter;
 
 import java.text.BreakIterator;
 
@@ -36,6 +38,7 @@ public class MainActivity extends AppCompatActivity
     private HomePresenter homePresenter;
     private LogPresenter logPresenter;
     private CarPresenter carPresenter;
+    private ProfilePresenter profilePresenter;
 
     GoodPrefs goodPrefs;
     private Driver driver;
@@ -120,6 +123,21 @@ public class MainActivity extends AppCompatActivity
         carPresenter = new CarPresenter(carFragment);
     }
 
+    private void showProfileFragment() {
+        Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.fragmentFrame);
+        ProfileFragment profileFragment;
+        if (fragment instanceof ProfileFragment) {
+            profileFragment = (ProfileFragment) fragment;
+        } else {
+            profileFragment = ProfileFragment.newInstance();
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.fragmentFrame, profileFragment)
+                    .addToBackStack(null)
+                    .commit();
+        }
+        profilePresenter = new ProfilePresenter(profileFragment);
+    }
+
     private void loggingOut() {
         goodPrefs.deleteValue("authenticated");
         goodPrefs.deleteValue("user");
@@ -150,8 +168,8 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_logs) {
             showLogFragment();
         } else if (id == R.id.nav_profile) {
-
-        } else if(id == R.id.nav_logout) {
+            showProfileFragment();
+        } else if (id == R.id.nav_logout) {
             loggingOut();
         }
 
