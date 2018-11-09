@@ -88,15 +88,11 @@ include("header.php");
         
       </ul>
      
-<div class="title_box">Manufacturers</div>
-      <ul class="left_menu">
-        
 
-    <?php  getbrands();  ?>
 
 
  
-</ul>
+
  <br>
  <br>
 
@@ -123,8 +119,8 @@ include("header.php");
 
 
 
-$get_carlog = "select * from carlog INNER JOIN products
-ON carlog.Car_id=products.prd_id ORDER BY id DESC;";
+$get_carlog = "select * from tolllog INNER JOIN car INNER JOIN driver INNER JOIN drivercar
+ON tolllog.Driver_id = driver.id AND tolllog.Car_id = car.id ORDER BY tolllog.id DESC;";
     $run_pro = mysqli_query($con,$get_carlog);
     
 
@@ -136,25 +132,28 @@ echo"<table>
  <tr>
     <th>Serial No.</th>
     <th>Passing Time</th>
-    <th>Car ID</th>
+    <th>License Plate No. </th>
     <th>option</th>
     <th>RFID NO</th>
   </tr>";
   while ($row_pro = mysqli_fetch_array($run_pro)){
-        $carlog_id = $row_pro['id'];
-        $carlog_time = $row_pro['timestamp'];
-        $car_id = $row_pro['Car_id'];
+        $carlog_id = $row_pro['tolllog.id'];
+        $carlog_time = $row_pro['tolllog.tolled_at'];
+        $car_no_plate = $row_pro['car.no_plate'];
+        $car_RFID = $row_pro['car.rfid'];
+        $car_id = $row_pro['drivercar.Driver_id'];
+
        
       // echo "Carlog ID: " . $carlog_id . " - time: " . $carlog_time. "- Car ID: " . $car_id. "<br>";
 
  
 
 echo "<tr>";
-echo "<td>" . $row_pro['id'] . "</td>";
-echo "<td>" . $row_pro['timestamp'] . "</td>";
-echo "<td>" . $row_pro['Car_id'] . "</td>";
+echo "<td>" . $row_pro['tolllog.id'] . "</td>";
+echo "<td>" . $row_pro['tolllog.tolled_at'] . "</td>";
+echo "<td>" . $row_pro['car.no_plate'] . "</td>";
 echo "<td> <a href='details.php?pro_id=$car_id'> Details</a> </td>";
-echo "<td>" . $row_pro['rfid_no'] . "</td>";
+echo "<td>" . $row_pro['car.rfid'] . "</td>";
 echo "</tr>";
 }
 echo "</table>";

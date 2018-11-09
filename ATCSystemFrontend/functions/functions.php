@@ -75,11 +75,11 @@ function getpro(){
 
 
         $product_id = $row_pro['id'];
-        $product_category = $row_pro['model'];
-        $product_brand = $row_pro['rfid'];
-        $product_title = $row_pro['image']; 
-        $product_price = $row_pro['no_plate'];
-        $product_image = $row_pro['CarType_id'];
+        $product_model = $row_pro['model'];
+        $product_rfid = $row_pro['rfid'];
+        $product_image = $row_pro['image']; 
+        $product_no_plate = $row_pro['no_plate'];
+        $product_type = $row_pro['CarType_id'];
         
          
 
@@ -90,9 +90,9 @@ function getpro(){
                 <div class='prod_box'>
         <div class='top_prod_box'></div>
         <div class='center_prod_box'>
-          <div class='product_title'><a href='details.php?pro_id=$product_id'>$product_title</a></div>
+          <div class='product_title'><a href='details.php?pro_id=$product_id'>$product_model</a></div>
           <div class='product_img'><a href='details.php?pro_id=$product_id'><img src='admin_area/product_images/$product_image' alt='' border='0' width='90' height='110' /></a></div>
-          <div class='prod_price'><span class='price'>tk $product_price</span></div>
+          <div class='prod_price'><span class='price'>$product_no_plate</span></div>
         </div>
         <div class='bottom_prod_box'></div>
         <div class='prod_details_tab'> <a href='index.php?addcart=$product_id' title='header=[Add to cart] body=[&nbsp;] fade=[on]''><img src='images/cart.gif' alt='' border='0' class='left_bt' /></a>
@@ -171,23 +171,13 @@ function details(){
 		$prod_id = $_GET['pro_id']; 
 
      
-    $get_pro = "SELECT
-  categories.cat_title,
-  brands.brand_title,
-  products.owner_name,
-  products.prd_desc,
-  products.balance,
-  products.rfid_no,
-  products.prd_img,
-  products.prd_id,
-  products.prd_cat,
-  products.prd_brand
-FROM products
-  INNER JOIN brands
-    ON brands.brand_id = products.prd_brand
-  INNER JOIN categories
-    ON categories.cat_id = products.prd_cat
-WHERE products.prd_id  = '$prod_id' ";
+    $get_pro = "SELECT *
+FROM drivercar
+  INNER JOIN driver
+    ON driver.id = drivercar.Driver_id
+  INNER JOIN car
+    ON car.id = drivercar.Car_id
+WHERE drivercar.Car_id  = '$prod_id' ";
     
     //$get_pro = "select * from products where prd_id = '$prod_id' ";
    // $get_pro = "select * from products INNER JOIN products ON products.prd_brand=brands.brand_id INNER JOIN products ON products.prd_cat=categories.cat_id where products.prd_id = '$prod_id' ";
