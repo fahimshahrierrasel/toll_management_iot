@@ -19,7 +19,7 @@ include("header-index.php");
     
    <form action="login.html" method="POST" enctype="multipart/form-data">
     <div class="style1">
-      <div class="center_title_bar">Sign Up For New User</div>
+      <div class="center_title_bar">Sign Up For A Normal User</div>
       <div class="prod_box_big">
         <div class="top_prod_box_big"></div>
         

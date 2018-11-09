@@ -177,7 +177,7 @@ FROM drivercar
     ON driver.id = drivercar.Driver_id
   INNER JOIN car
     ON car.id = drivercar.Car_id
-WHERE drivercar.Car_id  = '$prod_id' ";
+WHERE drivercar.Driver_id  = '$prod_id' ";
     
     //$get_pro = "select * from products where prd_id = '$prod_id' ";
    // $get_pro = "select * from products INNER JOIN products ON products.prd_brand=brands.brand_id INNER JOIN products ON products.prd_cat=categories.cat_id where products.prd_id = '$prod_id' ";
@@ -191,36 +191,34 @@ WHERE drivercar.Car_id  = '$prod_id' ";
 
     while($row_pro = mysqli_fetch_array($run_pro)){
 
- $get_pro = "select * from products where prd_id = '$prod_id'";
+ $get_pro = "select * from drivercar where Driver_id = '$prod_id'";
 
 
-        $product_id = $row_pro['prd_id'];
-        $product_description = $row_pro['prd_desc'];
-        $product_type = $row_pro['cat_title'];
-        $product_brand = $row_pro['brand_title'];
-        $product_title = $row_pro['owner_name'];
-        $rfid_no = $row_pro['rfid_no'];
-         
-        $product_price = $row_pro['balance'];
-        $product_image = $row_pro['prd_img'];
+        $driver_name = $row_pro['driver.name'];
+        $driver_license = $row_pro['driver.license_no'];
+        $driver_address = $row_pro['driver.address'];
+        $driver_balance = $row_pro['driver.balance'];
+        $car_model = $row_pro['car.model'];
+        $car_rfid = $row_pro['car.rfid'];
+        $car_image = $row_pro['car.image'];
+        $car_no_plate = $row_pro['car.no_plate'];
+        
 
 
     echo"
                   
 
-                 <div class='center_title_bar'>$product_title</div>
+                 <div class='center_title_bar'>$driver_name</div>
                  <div class='prod_box_big'>
         <div class='top_prod_box_big'></div>
         <div class='center_prod_box_big'>
-          <div class='product_img_big'> <img src='admin_area/product_images/$product_image' height=200 width=185 alt='' border='0' /></a>
+          <div class='product_img_big'> <img src='admin_area/product_images/$car_image' height=200 width=185 alt='' border='0' /></a>
             </div>
           <div class='details_big_box'>
-            <div class='product_title_big'>$product_title</div>
+            <div class='product_title_big'>$driver_name</div>
+            <div class='specifications'> Address: $driver_address </div>
              <div class='product_title_big'>Car ID: $product_id</div>
              <div class='product_title_big'>RFID No: $rfid_no</div>
-            <div class='specifications'>
-            Address: $product_description
-            </div>
             <div class='specifications'>
             Car Type: $product_type
             </div>

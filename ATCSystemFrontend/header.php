@@ -65,12 +65,16 @@
         <li><a href="unauthorize.php" class="nav5">Unauthorize Cars</a></li>
         <li class="divider"></li>
         <li class="divider"></li>
-        <li><a href="recharge/login.html" class="nav5">Admin: Recharge</a></li>
+        <li><a href="recharge/login.html" class="nav5">Recharge</a></li>
+        <li class="divider"></li>
+        <li class="divider"></li>
+        <li><a href="fixtoll.php" class="nav1">Update Toll Ammount</a></li>
         <li class="divider"></li>
         <li class="divider"></li>
         <li><a href="admin_area/login.html" class="nav1">Admin: Insert Car Info</a></li>
         <li class="divider"></li>
         <li class="divider"></li>
+
         
        
         

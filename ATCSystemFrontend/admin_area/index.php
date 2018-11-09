@@ -82,9 +82,6 @@
         <li><a href="tollchart.php" class="nav1">Toll Chart</a></li>
         <li class="divider"></li>
         <li class="divider"></li>
-        <li><a href="fixtoll.php" class="nav1">Update Toll Ammount</a></li>
-        <li class="divider"></li>
-        <li class="divider"></li>
         <li><a href="../recharge/index.php" class="nav5">Recharge Balance</a></li>
         <li class="divider"></li>
         <li class="divider"></li>
