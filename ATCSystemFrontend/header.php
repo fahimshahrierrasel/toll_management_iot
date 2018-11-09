@@ -65,7 +65,7 @@
         <li><a href="unauthorize.php" class="nav5">Unauthorize Cars</a></li>
         <li class="divider"></li>
         <li class="divider"></li>
-        <li><a href="recharge/index.php" class="nav5">Recharge</a></li>
+        <li><a href="recharge.php" class="nav5">Recharge</a></li>
         <li class="divider"></li>
         <li class="divider"></li>
         <li><a href="fixtoll.php" class="nav1">Update Toll</a></li>
