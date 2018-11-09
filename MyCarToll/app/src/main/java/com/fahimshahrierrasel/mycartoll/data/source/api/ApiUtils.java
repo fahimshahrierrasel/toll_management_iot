@@ -2,6 +2,7 @@ package com.fahimshahrierrasel.mycartoll.data.source.api;
 
 import com.fahimshahrierrasel.mycartoll.MyCarTollApp;
 import com.fahimshahrierrasel.mycartoll.R;
+import com.fahimshahrierrasel.mycartoll.data.source.api.service.DriverService;
 import com.fahimshahrierrasel.mycartoll.data.source.api.service.LoginService;
 import com.fahimshahrierrasel.mycartoll.data.source.api.service.UserService;
 
@@ -17,6 +18,10 @@ public class ApiUtils {
 
     public static UserService getUserService() {
         return RetrofitClient.getClient(BASE_URL).create(UserService.class);
+    }
+
+    public static DriverService getDriverService() {
+        return RetrofitClient.getClient(BASE_URL).create(DriverService.class);
     }
 
 }

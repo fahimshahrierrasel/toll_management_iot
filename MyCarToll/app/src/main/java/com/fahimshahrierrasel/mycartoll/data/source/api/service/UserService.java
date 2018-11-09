@@ -8,5 +8,5 @@ import retrofit2.http.Path;
 
 public interface UserService {
     @GET("user/{id}")
-    Call<User> listRepos(@Path("id") int userId);
+    Call<User> getUser(@Path("id") int userId);
 }
