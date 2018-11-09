@@ -18,7 +18,7 @@ db.connect((error) => {
     console.log('Database connected!')
 })
 
-const server = app.listen(3000, 'localhost', () => {
+const server = app.listen(3000, '0.0.0.0', () => {
     console.log('Server running at %s', server.address().address)
 })
 
