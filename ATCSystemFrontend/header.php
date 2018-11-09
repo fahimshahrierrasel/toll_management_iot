@@ -59,7 +59,7 @@
         <li><a href="allproducts.php" class="nav2">All Car Info</a></li>
         <li class="divider"></li>
         <li class="divider"></li>
-        <li><a href="carlogs.php" class="nav5">Car Logs</a></li>
+        <li><a href="carlogs.php" class="nav5">Toll Logs</a></li>
         <li class="divider"></li>
         <li class="divider"></li>
         <li><a href="unauthorize.php" class="nav5">Unauthorize Cars</a></li>
@@ -68,10 +68,10 @@
         <li><a href="recharge/login.html" class="nav5">Recharge</a></li>
         <li class="divider"></li>
         <li class="divider"></li>
-        <li><a href="fixtoll.php" class="nav1">Update Toll Ammount</a></li>
+        <li><a href="fixtoll.php" class="nav1">Update Toll</a></li>
         <li class="divider"></li>
         <li class="divider"></li>
-        <li><a href="admin_area/login.html" class="nav1">Admin: Insert Car Info</a></li>
+        <li><a href="admin_area/login.html" class="nav1">user log</a></li>
         <li class="divider"></li>
         <li class="divider"></li>
 
