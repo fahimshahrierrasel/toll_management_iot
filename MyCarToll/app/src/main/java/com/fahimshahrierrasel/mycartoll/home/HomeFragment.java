@@ -6,6 +6,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,18 +14,27 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.fahimshahrierrasel.mycartoll.R;
+import com.fahimshahrierrasel.mycartoll.adapter.CarAdapter;
+import com.fahimshahrierrasel.mycartoll.data.model.Car;
 import com.fahimshahrierrasel.mycartoll.data.model.Driver;
+
+import java.util.List;
 
 public class HomeFragment extends Fragment implements HomeContract.View {
     private HomeContract.Presenter homePresenter;
 
-    /** Android Views **/
+    /**
+     * Android Views
+     **/
     SwipeRefreshLayout swipeContainer;
     TextView textViewDriverName;
     TextView textViewLicense;
     TextView textViewBalance;
     RecyclerView recyclerViewCars;
-    /** Android Views **/
+
+    /**
+     * Android Views
+     **/
 
     public HomeFragment() {
     }
@@ -51,12 +61,12 @@ public class HomeFragment extends Fragment implements HomeContract.View {
      * Binds XML views
      * Call this function after layout is ready.
      **/
-    private void bindViews(View rootView){
-        swipeContainer =  rootView.findViewById(R.id.swipeContainer);
-        textViewDriverName =  rootView.findViewById(R.id.textView_driver_name);
-        textViewLicense =  rootView.findViewById(R.id.textView_license);
-        textViewBalance =  rootView.findViewById(R.id.textView_balance);
-        recyclerViewCars =  rootView.findViewById(R.id.recyclerView_cars);
+    private void bindViews(View rootView) {
+        swipeContainer = rootView.findViewById(R.id.swipeContainer);
+        textViewDriverName = rootView.findViewById(R.id.textView_driver_name);
+        textViewLicense = rootView.findViewById(R.id.textView_license);
+        textViewBalance = rootView.findViewById(R.id.textView_balance);
+        recyclerViewCars = rootView.findViewById(R.id.recyclerView_cars);
     }
 
     @Override
@@ -71,8 +81,20 @@ public class HomeFragment extends Fragment implements HomeContract.View {
     }
 
     @Override
-    public void stopSwipRefreshing() {
+    public void stopSwipeRefreshing() {
         swipeContainer.setRefreshing(false);
+    }
+
+    @Override
+    public void populateDriverCars(List<Car> cars) {
+        recyclerViewCars.setAdapter(new CarAdapter(cars, homePresenter::onCarClicked));
+        recyclerViewCars.setLayoutManager(new LinearLayoutManager(getContext(),
+                LinearLayoutManager.VERTICAL, false));
+    }
+
+    @Override
+    public void showCarLog(Car car) {
+        
     }
 
     @Override

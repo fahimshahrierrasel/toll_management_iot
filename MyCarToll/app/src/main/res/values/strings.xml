@@ -10,7 +10,10 @@
     <string name="password">Password</string>
     <string name="register">Register</string>
     <string name="login">Login</string>
-    <string name="api_root">http://192.168.0.3:3000</string>
+    <string name="api_root_rel">http://192.168.5.110:3000</string>
+    <string name="api_root_dev">http://192.168.0.3:3000</string>
     <string name="balance">Balance</string>
     <string name="license_no">License No</string>
+    <string name="car_type">Car Type</string>
+    <string name="rfid">RFID:</string>
 </resources>
