@@ -17,7 +17,7 @@ include("header-index.php");
 
     
     
-   <form action="login.html" method="POST" enctype="multipart/form-data">
+   <form action="" method="POST" enctype="multipart/form-data">
     <div class="style1">
       <div class="center_title_bar">Sign Up For A Normal User</div>
       <div class="prod_box_big">
@@ -33,7 +33,9 @@ include("header-index.php");
       
              <div class="form_row">
               <label class="contact"><strong>User Type:</strong></label>
-              <input type="text" class="contact_input" name="user_type" required />
+              <select class="contact_input" name="user_type" required>
+              <option value="normal">Normal</option>
+            </select>
             </div>
 
             <div class="form_row">
@@ -77,7 +79,7 @@ include("header-index.php");
 if(isset($_POST['index'])){
 
     //getting text data
-   $user_type = $_POST['user_type'];
+   $user_type = "normal";
    $email = $_POST['email'];
    $password = $_POST['password'];
 
