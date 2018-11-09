@@ -56,6 +56,9 @@
         <li><a href="index.php" class="nav1"> Home</a></li>
         <li class="divider"></li>
         <li class="divider"></li>
+        <li><a href="index_admin.php" class="nav1">Admin Home</a></li>
+        <li class="divider"></li>
+        <li class="divider"></li>
         <li><a href="allproducts.php" class="nav2">All Car Info</a></li>
         <li class="divider"></li>
         <li class="divider"></li>
@@ -71,7 +74,7 @@
         <li><a href="fixtoll.php" class="nav1">Update Toll</a></li>
         <li class="divider"></li>
         <li class="divider"></li>
-        <li><a href="admin_area/login.html" class="nav1">user log</a></li>
+        <li><a href="index.php" class="nav1">Log Out</a></li>
         <li class="divider"></li>
         <li class="divider"></li>
 

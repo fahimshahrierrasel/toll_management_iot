@@ -163,12 +163,12 @@ function special(){
 
 function details(){
 
-	global $con;
+  global $con;
 
 
-	if(isset($_GET['pro_id'])){
+  if(isset($_GET['pro_id'])){
 
-		$prod_id = $_GET['pro_id']; 
+    $prod_id = $_GET['pro_id']; 
 
      
     $get_pro = "SELECT *
@@ -191,7 +191,7 @@ WHERE drivercar.Driver_id  = '$prod_id' ";
 
     while($row_pro = mysqli_fetch_array($run_pro)){
 
- $get_pro = "select * from drivercar where Driver_id = '$prod_id'";
+ $get_pro = "select * from drivercar INNER JOIN  driver ON driver.id=drivercar.Driver_id INNER JOIN car ON car.id=drivercar.Car_id where drivercar.Driver_id = '$prod_id'";
 
 
         $driver_name = $row_pro['driver.name'];
@@ -216,18 +216,14 @@ WHERE drivercar.Driver_id  = '$prod_id' ";
             </div>
           <div class='details_big_box'>
             <div class='product_title_big'>$driver_name</div>
-            <div class='specifications'> Address: $driver_address </div>
-             <div class='product_title_big'>Car ID: $product_id</div>
-             <div class='product_title_big'>RFID No: $rfid_no</div>
-            <div class='specifications'>
-            Car Type: $product_type
-            </div>
-            <div class='specifications'>
-            Car Brand: $product_brand
-            </div>
-            <div class='prod_price_big'> <span class='price'>Balance:tk $product_price</span></div>
+            <div class='specifications'>Address: $driver_address</div>
+             <div class='product_title_big'>license No: $driver_license</div>
+             <div class='product_title_big'>RFID No: $car_rfid</div>
+             <div class='specifications'>Car Type: $car_model</div>
+            <div class='specifications'>Car Brand: $car_no_plate</div>
+            <div class='prod_price_big'> <span class='price'>Balance:tk $driver_balance</span></div>
 
-            <a href='index.php' class='compare'>Home</a> </div>
+            <a href='index_admin.php' class='compare'>Home</a> </div>
         </div>
         <div class='bottom_prod_box_big'></div>
       </div>
