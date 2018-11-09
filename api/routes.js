@@ -7,10 +7,10 @@ const logController = require('./controller/log_controller')
 const router = (app) => {
     app.post('/login', authController.login)
     app.get('/user/:id', userController.getUser)
-    app.get('/driver/:id', driverController.getDriver)
-    app.get('/driver/:id/cars', carController.getDriverCars)
-    app.get('/driver/car/:id/logs', logController.getCarTollLogs)
-    app.get('/driver/:id/logs', logController.getDriverTollLogs)
+    app.get('/driver/:user_id', driverController.getDriver)
+    app.get('/driver/:driver_id/cars', carController.getDriverCars)
+    app.get('/driver/car/:driver_id/logs', logController.getCarTollLogs)
+    app.get('/driver/:driver_id/logs', logController.getDriverTollLogs)
 
 }
 

@@ -2,7 +2,7 @@ const Driver = require('../models/driver')
 
 exports.getDriver = (req, res) => {
     let params = req.params;
-    Driver.getDriver(params.id, (error, result) => {
+    Driver.getDriver(params.user_id, (error, result) => {
         if (error) {
             res.status(500).end()
         }

@@ -9,8 +9,8 @@ function response(error, res, callback) {
     }
 }
 
-exports.getDriver = (id, callback) => {
-    db.query("SELECT id, name, license_no, address, balance FROM Driver WHERE id = ?", [id], (error, res) => {
+exports.getDriver = (user_id, callback) => {
+    db.query("SELECT id, name, license_no, address, balance FROM Driver WHERE User_id = ?", [user_id], (error, res) => {
         response(error, res, callback)
     })
 }

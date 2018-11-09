@@ -2,7 +2,7 @@ const Log = require('../models/log')
 
 exports.getCarTollLogs = (req, res) => {
     let params = req.params;
-    Log.getCarTollLogs(params.id, (error, result) => {
+    Log.getCarTollLogs(params.driver_id, (error, result) => {
         if (error) {
             res.status(500).end()
         }
@@ -14,7 +14,7 @@ exports.getCarTollLogs = (req, res) => {
 
 exports.getDriverTollLogs = (req, res) => {
     let params = req.params;
-    Log.getDriverTollLogs(params.id, (error, result) => {
+    Log.getDriverTollLogs(params.driver_id, (error, result) => {
         if (error) {
             res.status(500).end()
         }

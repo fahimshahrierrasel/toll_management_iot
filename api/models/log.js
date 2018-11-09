@@ -9,14 +9,14 @@ function response(error, res, callback) {
     }
 }
 
-exports.getCarTollLogs = (id, callback) => {
-    db.query("SELECT cost, location, tolled_at FROM TollLog WHERE Car_id = ? ORDER BY TollLog.tolled_at DESC", [id], (error, res) => {
+exports.getCarTollLogs = (driver_id, callback) => {
+    db.query("SELECT cost, location, tolled_at FROM TollLog WHERE Car_id = ? ORDER BY TollLog.tolled_at DESC", [driver_id], (error, res) => {
         response(error, res, callback)
     })
 }
 
-exports.getDriverTollLogs = (id, callback) => {
-    db.query("SELECT Car.model, TollLog.cost, TollLog.location, TollLog.tolled_at FROM Car INNER JOIN TollLog ON Car.id = TollLog.Car_id WHERE TollLog.Driver_id = ? ORDER BY TollLog.tolled_at DESC", [id], (error, res) => {
+exports.getDriverTollLogs = (driver_id, callback) => {
+    db.query("SELECT Car.model, TollLog.cost, TollLog.location, TollLog.tolled_at FROM Car INNER JOIN TollLog ON Car.id = TollLog.Car_id WHERE TollLog.Driver_id = ? ORDER BY TollLog.tolled_at DESC", [driver_id], (error, res) => {
         response(error, res, callback)
     })
 }
