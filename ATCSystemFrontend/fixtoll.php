@@ -69,10 +69,10 @@
     <div id="menu_tab">
       <div class="left_menu_corner"></div>
       <ul class="menu">
-        <li><a href="../index.php" class="nav1"> Home</a></li>
+        <li><a href="index.php" class="nav1"> Home</a></li>
         <li class="divider"></li>
         <li class="divider"></li>
-        <li><a href="index.php" class="nav1">Admin Home</a></li>
+        <li><a href="index_admin.php" class="nav1">Admin Home</a></li>
         <li class="divider"></li>
         <li class="divider"></li>
         <li><a href="insertdriver.php" class="nav1">Insert Driver Info</a></li>
@@ -81,13 +81,13 @@
         <li><a href="tollchart.php" class="nav1">Toll Chart</a></li>
         <li class="divider"></li>
         <li class="divider"></li>
-        <li><a href="fixtoll.php" class="nav1">Update Toll Ammount</a></li>
+        <li><a href="fixtoll.php" class="nav1">Update Toll</a></li>
         <li class="divider"></li>
         <li class="divider"></li>
-        <li><a href="../recharge/index.php" class="nav5">Recharge Balance</a></li>
+        <li><a href="recharge.php" class="nav5">Recharge</a></li>
         <li class="divider"></li>
         <li class="divider"></li>
-        <li><a href="login.html" class="nav1">Admin_login</a></li>
+        <li><a href="index.php" class="nav1">Log Out</a></li>
         <li class="divider"></li>
         <li class="divider"></li>
         

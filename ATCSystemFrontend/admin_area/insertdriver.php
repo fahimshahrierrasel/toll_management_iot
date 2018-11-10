@@ -62,14 +62,13 @@
   </div>
   <div id="main_content">
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <!-- end of menu tab -->
-    <!-- end of left content -->
-
-
     <div id="menu_tab">
       <div class="left_menu_corner"></div>
       <ul class="menu">
         <li><a href="../index.php" class="nav1"> Home</a></li>
+        <li class="divider"></li>
+        <li class="divider"></li>
+        <li><a href="details.php" class="nav1">My Profile</a></li>
         <li class="divider"></li>
         <li class="divider"></li>
         <li><a href="index.php" class="nav1">Admin Home</a></li>
@@ -79,12 +78,6 @@
         <li class="divider"></li>
         <li class="divider"></li>
         <li><a href="tollchart.php" class="nav1">Toll Chart</a></li>
-        <li class="divider"></li>
-        <li class="divider"></li>
-        <li><a href="fixtoll.php" class="nav1">Update Toll Ammount</a></li>
-        <li class="divider"></li>
-        <li class="divider"></li>
-        <li><a href="../recharge/index.php" class="nav5">Recharge Balance</a></li>
         <li class="divider"></li>
         <li class="divider"></li>
         <li><a href="login.html" class="nav1">Admin_login</a></li>
@@ -101,7 +94,7 @@
     
     <form action="" method="POST" enctype="multipart/form-data">
     <div class="style1">
-      <div class="style2">INSERT DRIVER'S INFORMATION</div>
+      <div class="style2">UPDATE DRIVER'S INFORMATION</div>
       <div class="prod_box_big">
         <div class="top_prod_box_big"></div>
         
@@ -119,19 +112,18 @@
             </div>
 
             <div class="form_row">
-              <label class="contact"><strong>Email:</strong></label>&nbsp;
-              <input type="emali" class="contact_input" name="User_id" required /></div>
-
-              <div class="form_row">
-              <label class="contact"><strong>Password:</strong></label>&nbsp;
-              <input type="password" class="contact_input" name="User_id" required /></div>
-
-            <div class="form_row">
               <label class="contact"><strong>License Number:</strong></label>
               <input type="text" class="contact_input" name="license_no" required />
             </div>
-            
-<!--             <div class="form_row">
+
+ <!--             <div class="form_row">
+              <label class="contact"><strong>License Number:</strong></label>
+              <input type="text" class="contact_input" name="license_no" required />
+            </div>
+
+
+
+             <div class="form_row">
               <label class="contact"><strong>Balance Ammount:</strong></label>&nbsp;
               <input type="Number" class="contact_input" name="balance" required /></div> -->
 
@@ -176,12 +168,10 @@ if(isset($_POST['index'])){
     //getting text data
    $name = $_POST['name'];
    $license_no = $_POST['license_no'];
-   $balance = $_POST['balance'];
    $address = $_POST['address'];
-   $User_id = $_POST['User_id'];
 
 
-   $insert_product = "insert into driver (name,license_no,address,balance,User_id) values ('$name','$license_no','$address','$balance','$User_id')";
+   $insert_product = "insert into driver (name,license_no,address) values ('$name','$license_no','$address')";
    
    $run_product = mysqli_query($con,$insert_product);
    

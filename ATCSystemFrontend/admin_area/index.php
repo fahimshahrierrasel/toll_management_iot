@@ -73,6 +73,9 @@
         <li><a href="../index.php" class="nav1"> Home</a></li>
         <li class="divider"></li>
         <li class="divider"></li>
+        <li><a href="details.php" class="nav1">My Profile</a></li>
+        <li class="divider"></li>
+        <li class="divider"></li>
         <li><a href="index.php" class="nav1">Admin Home</a></li>
         <li class="divider"></li>
         <li class="divider"></li>
@@ -80,12 +83,6 @@
         <li class="divider"></li>
         <li class="divider"></li>
         <li><a href="tollchart.php" class="nav1">Toll Chart</a></li>
-        <li class="divider"></li>
-        <li class="divider"></li>
-        <li><a href="fixtoll.php" class="nav1">Update Toll Ammount</a></li>
-        <li class="divider"></li>
-        <li class="divider"></li>
-        <li><a href="../recharge/index.php" class="nav5">Recharge Balance</a></li>
         <li class="divider"></li>
         <li class="divider"></li>
         <li><a href="login.html" class="nav1">Admin_login</a></li>

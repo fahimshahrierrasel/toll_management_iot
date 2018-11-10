@@ -1,6 +1,6 @@
 <?php
 
- $con = mysqli_connect("localhost","root","","atollsystem");
+ $con = mysqli_connect("localhost","root","","atcsystem");
 
  if(mysqli_connect_errno()){
   
@@ -14,14 +14,14 @@ function getcats(){
 
 	global $con;
 
-	$get_cats = "select * from categories";
+	$get_cats = "select * from cartype";
 	$run_cats = mysqli_query($con,$get_cats);
 
 	while($row_cats=mysqli_fetch_array($run_cats)){
 
 
-		$cat_title = $row_cats['cat_title'];
-        $cat_id = $row_cats['cat_id'];
+		$cat_title = $row_cats['type'];
+        $cat_id = $row_cats['id'];
 	
     echo "<li class=even><a href='index.php?cat=$cat_id'>$cat_title</a></li>";
 	}
@@ -66,7 +66,7 @@ function getpro(){
 
 	global $con;
 
-    $get_pro = "select * from products order by RAND() LIMIT 0,6";
+    $get_pro = "select * from car order by RAND() LIMIT 0,6";
     $run_pro = mysqli_query($con,$get_pro);
     
 
@@ -74,12 +74,12 @@ function getpro(){
     while($row_pro = mysqli_fetch_array($run_pro)){
 
 
-        $product_id = $row_pro['prd_id'];
-        $product_category = $row_pro['prd_cat'];
-        $product_brand = $row_pro['prd_brand'];
-        $product_title = $row_pro['owner_name']; 
-        $product_price = $row_pro['balance'];
-        $product_image = $row_pro['prd_img'];
+        $product_id = $row_pro['id'];
+        $product_model = $row_pro['model'];
+        $product_rfid = $row_pro['rfid'];
+        $product_image = $row_pro['image']; 
+        $product_no_plate = $row_pro['no_plate'];
+        $product_type = $row_pro['CarType_id'];
         
          
 
@@ -90,9 +90,9 @@ function getpro(){
                 <div class='prod_box'>
         <div class='top_prod_box'></div>
         <div class='center_prod_box'>
-          <div class='product_title'><a href='details.php?pro_id=$product_id'>$product_title</a></div>
+          <div class='product_title'><a href='details.php?pro_id=$product_id'>$product_model</a></div>
           <div class='product_img'><a href='details.php?pro_id=$product_id'><img src='admin_area/product_images/$product_image' alt='' border='0' width='90' height='110' /></a></div>
-          <div class='prod_price'><span class='price'>tk $product_price</span></div>
+          <div class='prod_price'><span class='price'>$product_no_plate</span></div>
         </div>
         <div class='bottom_prod_box'></div>
         <div class='prod_details_tab'> <a href='index.php?addcart=$product_id' title='header=[Add to cart] body=[&nbsp;] fade=[on]''><img src='images/cart.gif' alt='' border='0' class='left_bt' /></a>
@@ -163,31 +163,21 @@ function special(){
 
 function details(){
 
-	global $con;
+  global $con;
 
 
-	if(isset($_GET['pro_id'])){
+  if(isset($_GET['pro_id'])){
 
-		$prod_id = $_GET['pro_id']; 
+    $prod_id = $_GET['pro_id']; 
 
      
-    $get_pro = "SELECT
-  categories.cat_title,
-  brands.brand_title,
-  products.owner_name,
-  products.prd_desc,
-  products.balance,
-  products.rfid_no,
-  products.prd_img,
-  products.prd_id,
-  products.prd_cat,
-  products.prd_brand
-FROM products
-  INNER JOIN brands
-    ON brands.brand_id = products.prd_brand
-  INNER JOIN categories
-    ON categories.cat_id = products.prd_cat
-WHERE products.prd_id  = '$prod_id' ";
+    $get_pro = "SELECT *
+FROM drivercar
+  INNER JOIN driver
+    ON driver.id = drivercar.Driver_id
+  INNER JOIN car
+    ON car.id = drivercar.Car_id
+WHERE drivercar.Driver_id  = '$prod_id' ";
     
     //$get_pro = "select * from products where prd_id = '$prod_id' ";
    // $get_pro = "select * from products INNER JOIN products ON products.prd_brand=brands.brand_id INNER JOIN products ON products.prd_cat=categories.cat_id where products.prd_id = '$prod_id' ";
@@ -201,45 +191,39 @@ WHERE products.prd_id  = '$prod_id' ";
 
     while($row_pro = mysqli_fetch_array($run_pro)){
 
- $get_pro = "select * from products where prd_id = '$prod_id'";
+ $get_pro = "select * from drivercar INNER JOIN  driver ON driver.id=drivercar.Driver_id INNER JOIN car ON car.id=drivercar.Car_id where drivercar.Driver_id = '$prod_id'";
 
 
-        $product_id = $row_pro['prd_id'];
-        $product_description = $row_pro['prd_desc'];
-        $product_type = $row_pro['cat_title'];
-        $product_brand = $row_pro['brand_title'];
-        $product_title = $row_pro['owner_name'];
-        $rfid_no = $row_pro['rfid_no'];
-         
-        $product_price = $row_pro['balance'];
-        $product_image = $row_pro['prd_img'];
+        $driver_name = $row_pro['driver.name'];
+        $driver_license = $row_pro['driver.license_no'];
+        $driver_address = $row_pro['driver.address'];
+        $driver_balance = $row_pro['driver.balance'];
+        $car_model = $row_pro['car.model'];
+        $car_rfid = $row_pro['car.rfid'];
+        $car_image = $row_pro['car.image'];
+        $car_no_plate = $row_pro['car.no_plate'];
+        
 
 
     echo"
                   
 
-                 <div class='center_title_bar'>$product_title</div>
+                 <div class='center_title_bar'>$driver_name</div>
                  <div class='prod_box_big'>
         <div class='top_prod_box_big'></div>
         <div class='center_prod_box_big'>
-          <div class='product_img_big'> <img src='admin_area/product_images/$product_image' height=200 width=185 alt='' border='0' /></a>
+          <div class='product_img_big'> <img src='admin_area/product_images/$car_image' height=200 width=185 alt='' border='0' /></a>
             </div>
           <div class='details_big_box'>
-            <div class='product_title_big'>$product_title</div>
-             <div class='product_title_big'>Car ID: $product_id</div>
-             <div class='product_title_big'>RFID No: $rfid_no</div>
-            <div class='specifications'>
-            Address: $product_description
-            </div>
-            <div class='specifications'>
-            Car Type: $product_type
-            </div>
-            <div class='specifications'>
-            Car Brand: $product_brand
-            </div>
-            <div class='prod_price_big'> <span class='price'>Balance:tk $product_price</span></div>
+            <div class='product_title_big'>$driver_name</div>
+            <div class='specifications'>Address: $driver_address</div>
+             <div class='product_title_big'>license No: $driver_license</div>
+             <div class='product_title_big'>RFID No: $car_rfid</div>
+             <div class='specifications'>Car Type: $car_model</div>
+            <div class='specifications'>Car Brand: $car_no_plate</div>
+            <div class='prod_price_big'> <span class='price'>Balance:tk $driver_balance</span></div>
 
-            <a href='index.php' class='compare'>Home</a> </div>
+            <a href='index_admin.php' class='compare'>Home</a> </div>
         </div>
         <div class='bottom_prod_box_big'></div>
       </div>

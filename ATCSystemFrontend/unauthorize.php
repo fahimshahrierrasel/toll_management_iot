@@ -21,7 +21,7 @@ include("header.php");
 
 <?php
 
-$dir_path = "una_image/";
+$dir_path = "../../TollSystem/una_image/";
 $extensions_array = array('bmp','jpg','png','jpeg');
 
 if(is_dir($dir_path))
