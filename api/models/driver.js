@@ -9,14 +9,8 @@ function response(error, res, callback) {
     }
 }
 
-exports.checkUser = (email, pass, callback) => {
-    db.query("SELECT id FROM USER WHERE email = ? AND PASSWORD = ?", [email, pass], (error, res) => {
-        response(error, res, callback)
-    })
-}
-
-exports.getUser = (id, callback) => {
-    db.query("SELECT * FROM USER WHERE id = ?", [id], (error, res) => {
+exports.getDriver = (user_id, callback) => {
+    db.query("SELECT id, name, license_no, address, balance FROM Driver WHERE User_id = ?", [user_id], (error, res) => {
         response(error, res, callback)
     })
 }

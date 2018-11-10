@@ -1,5 +1,5 @@
 -- Created by Vertabelo (http://vertabelo.com)
--- Last modification date: 2018-11-06 15:40:06.883
+-- Last modification date: 2018-11-08 16:37:42.986
 
 -- tables
 -- Table: Car
@@ -7,6 +7,7 @@ CREATE TABLE Car (
     id int NOT NULL AUTO_INCREMENT,
     model varchar(45) NOT NULL,
     rfid varchar(45) NOT NULL,
+    image varchar(300) NOT NULL,
     no_plate varchar(45) NOT NULL,
     CarType_id int NOT NULL,
     CONSTRAINT Car_pk PRIMARY KEY (id)
@@ -14,7 +15,7 @@ CREATE TABLE Car (
 
 -- Table: CarType
 CREATE TABLE CarType (
-    id int NOT NULL,
+    id int NOT NULL AUTO_INCREMENT,
     type varchar(100) NULL,
     CONSTRAINT CarType_pk PRIMARY KEY (id)
 ) ENGINE InnoDB;
@@ -39,7 +40,7 @@ CREATE TABLE DriverCar (
 
 -- Table: Toll
 CREATE TABLE Toll (
-    id int NOT NULL,
+    id int NOT NULL AUTO_INCREMENT,
     amount double NOT NULL,
     CarType_id int NOT NULL,
     CONSTRAINT Toll_pk PRIMARY KEY (id)
@@ -47,17 +48,18 @@ CREATE TABLE Toll (
 
 -- Table: TollLog
 CREATE TABLE TollLog (
-    id int NOT NULL,
+    id int NOT NULL AUTO_INCREMENT,
     Driver_id int NOT NULL,
-    cost double NULL,
     Car_id int NOT NULL,
-    Driver_2_id int NOT NULL,
+    cost double NOT NULL,
+    location varchar(100) NOT NULL,
+    tolled_at timestamp NOT NULL DEFAULT current_timestamp,
     CONSTRAINT TollLog_pk PRIMARY KEY (id)
 ) ENGINE InnoDB;
 
 -- Table: User
 CREATE TABLE User (
-    id int NOT NULL,
+    id int NOT NULL AUTO_INCREMENT,
     email varchar(100) NULL,
     password varchar(100) NULL,
     user_type varchar(45) NULL,
@@ -86,7 +88,7 @@ ALTER TABLE TollLog ADD CONSTRAINT TollLog_Car FOREIGN KEY TollLog_Car (Car_id)
     REFERENCES Car (id);
 
 -- Reference: TollLog_Driver (table: TollLog)
-ALTER TABLE TollLog ADD CONSTRAINT TollLog_Driver FOREIGN KEY TollLog_Driver (Driver_2_id)
+ALTER TABLE TollLog ADD CONSTRAINT TollLog_Driver FOREIGN KEY TollLog_Driver (Driver_id)
     REFERENCES Driver (id);
 
 -- Reference: Toll_CarType (table: Toll)
