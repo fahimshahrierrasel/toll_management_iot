@@ -1,8 +1,8 @@
-const User = require('../models/user')
+const Driver = require('../models/driver')
 
-exports.getUser = (req, res) => {
+exports.getDriver = (req, res) => {
     let params = req.params;
-    User.getUser(params.id, (error, result) => {
+    Driver.getDriver(params.user_id, (error, result) => {
         if (error) {
             res.status(500)
         }
