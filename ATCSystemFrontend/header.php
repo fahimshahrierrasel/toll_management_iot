@@ -71,9 +71,6 @@
         <li><a href="recharge.php" class="nav5">Recharge</a></li>
         <li class="divider"></li>
         <li class="divider"></li>
-        <li><a href="fixtoll.php" class="nav1">Update Toll</a></li>
-        <li class="divider"></li>
-        <li class="divider"></li>
         <li><a href="index.php" class="nav1">Log Out</a></li>
         <li class="divider"></li>
         <li class="divider"></li>
