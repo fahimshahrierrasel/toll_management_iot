@@ -27,27 +27,24 @@ For API:
 
 ## Ardino Connection with sensor and other elements
 
-![image21](/Users/fahim/Projects/toll_management_iot/assets/image21.png)
+![image21](./assets/image21.png)
 
 ##  Full Environment
 
-![image23](/Users/fahim/Projects/toll_management_iot/assets/image23.png)
+![image23](./assets/image23.png)
 
-![image22](/Users/fahim/Projects/toll_management_iot/assets/image22.jpeg)
+![image22](./assets/image22.jpeg)
 
 ## Web Frontend
 
-![image24](/Users/fahim/Projects/toll_management_iot/assets/image24.png)
+![image24](./assets/image24.png)
 
-![image25](/Users/fahim/Projects/toll_management_iot/assets/image25.png)
+![image25](./assets/image25.png)
 
 ## Android Application
 
-![Screenshot_20181114-190026](/Users/fahim/Projects/toll_management_iot/assets/Screenshot_20181114-190026.png) ![](/Users/fahim/Projects/toll_management_iot/assets/Screenshot_20181114-190040.png)
+![Screenshot_20181114-190026](./assets/Screenshot_20181114-190026.png) ![](./assets/Screenshot_20181114-190040.png)
 
-![Screenshot_20181114-190051](/Users/fahim/Projects/toll_management_iot/assets/Screenshot_20181114-190051.png) ![Screenshot_20181114-190104](/Users/fahim/Projects/toll_management_iot/assets/Screenshot_20181114-190104.png)
+![Screenshot_20181114-190051](./assets/Screenshot_20181114-190051.png) ![Screenshot_20181114-190104](./assets/Screenshot_20181114-190104.png)
 
-![Screenshot_20181114-190112](/Users/fahim/Projects/toll_management_iot/assets/Screenshot_20181114-190112.png) 
-
-
-
+![Screenshot_20181114-190112](./assets/Screenshot_20181114-190112.png) 
